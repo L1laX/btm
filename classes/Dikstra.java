@@ -134,9 +134,6 @@ public class Dikstra {
         break;
       }
 
-      String targetStationType = pathMap.getStation(target).getType() != null ? pathMap.getStation(target).getType()
-          : "";
-
       // Skip if already processed
       if (processed.contains(currentStation)) {
         continue;
@@ -160,7 +157,8 @@ public class Dikstra {
 
         // If the neighbor is of a different type than the target, add 1 to the distance
         // to run the main path
-        if (pathMap.getStation(neighbor) != null && !targetStationType.equals(pathMap.getStation(neighbor).getType())) {
+        if (pathMap.getStation(target).getType() != null && pathMap.getStation(neighbor) != null
+            && !pathMap.getStation(target).getType().equals(pathMap.getStation(neighbor).getType())) {
           newDistance += 1;
         }
         // Update if new distance is shorter
@@ -186,9 +184,9 @@ public class Dikstra {
       path.add(0, current);
       current = previous.get(current);
     }
+
     path.add(0, source);
     pq.clear();
-    System.out.println("__________");
     return new PathResult(path, 0, countInterChange);
   }
 
