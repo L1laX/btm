@@ -183,7 +183,6 @@ public class Dikstra {
       path.add(0, current);
       current = previous.get(current);
     }
-
     path.add(0, source);
     pq.clear();
     return new PathResult(path, 0, countInterChange);
