@@ -155,8 +155,7 @@ public class Dikstra {
         // Calculate new distance (each edge has weight 1)
         int newDistance = distances.get(currentStation) + 1;
 
-        // If the neighbor is of a different type than the target, add 1 to the distance
-        // to run the main path
+        // If the neighbor is of a different type than the target, add 1 to the distance to run the main path
         if (pathMap.getStation(target).getType() != null && pathMap.getStation(neighbor) != null
             && !pathMap.getStation(target).getType().equals(pathMap.getStation(neighbor).getType())) {
           newDistance += 1;
